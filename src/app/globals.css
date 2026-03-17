@@ -1,4 +1,90 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-BlackIt.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-BoldIt.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-ExtraLightIt.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-It.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-LightIt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-MediumIt.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hasklig';
+  src: url('/fonts/Hasklig-SemiboldIt.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
 
 :root {
   --background: #ffffff;
@@ -12,11 +98,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 body {
