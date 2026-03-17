@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Button } from './Button';
+import Button, { Variant } from './Button';
 
 describe('Button', () => {
   it('renders the label', () => {
@@ -23,7 +23,7 @@ describe('Button', () => {
   });
 
   it('applies the secondary variant class', () => {
-    render(<Button label="Cancel" variant="secondary" />);
+    render(<Button label="Cancel" variant={Variant.Secondary} />);
     const btn = screen.getByRole('button', { name: 'Cancel' });
     expect(btn.className).toMatch(/border/);
   });

@@ -1,106 +1,29 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-Black.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-BlackIt.ttf') format('truetype');
-  font-weight: 900;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-BoldIt.ttf') format('truetype');
-  font-weight: 700;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-ExtraLight.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-ExtraLightIt.ttf') format('truetype');
-  font-weight: 200;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-It.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-LightIt.ttf') format('truetype');
-  font-weight: 300;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-MediumIt.ttf') format('truetype');
-  font-weight: 500;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-Semibold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Hasklig';
-  src: url('/fonts/Hasklig-SemiboldIt.ttf') format('truetype');
-  font-weight: 600;
-  font-style: italic;
-}
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0D0D0D;
+  --foreground: #F0F0F0;
 }
 
 @theme inline {
+  --color-primary: #FF00A0;
+  --color-secondary: #00F5FF;
+  --color-brand-accent: #F5FF00;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-press-start: 'Press Start 2P', system-ui;
+  --font-orbitron: 'Orbitron', system-ui;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #050508;
+  --foreground: #C8C8D4;
+  --color-primary: #C2006E;
+  --color-secondary: #009DB3;
+  --color-brand-accent: #C8A800;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 }
 
 body {

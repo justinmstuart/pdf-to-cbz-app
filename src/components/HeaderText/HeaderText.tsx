@@ -9,7 +9,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const baseClassName = 'text-center font-[Hasklig] text-foreground';
+const baseClassName = 'text-center font-press-start text-foreground';
 
 const headerClassNames: Record<HeaderType, string> = {
   [HeaderType.H1]: `text-[80px] font-bold`,
