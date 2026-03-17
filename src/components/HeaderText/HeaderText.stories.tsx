@@ -1,17 +1,17 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import HeaderText, { HeaderType } from "./HeaderText";
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import HeaderText, { HeaderType } from './HeaderText';
 
 const meta: Meta<typeof HeaderText> = {
-  title: "Components/HeaderText",
+  title: 'Components/HeaderText',
   component: HeaderText,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
-    type: { control: "radio", options: [HeaderType.H1] },
-    children: { control: "text" },
+    type: { control: 'radio', options: [HeaderType.H1] },
+    children: { control: 'text' },
   },
   args: {
     type: HeaderType.H1,
-    children: "Lorem ipsum dolor",
+    children: 'Lorem ipsum dolor',
   },
 };
 

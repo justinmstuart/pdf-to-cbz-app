@@ -1,10 +1,10 @@
-import type { Preview } from "@storybook/nextjs";
-import { withThemeByClassName } from "@storybook/addon-themes";
-import "../src/app/globals.css";
+import type { Preview } from '@storybook/nextjs';
+import { withThemeByClassName } from '@storybook/addon-themes';
+import '../src/app/globals.css';
 export const decorators = [
   withThemeByClassName({
-    themes: { light: "light", dark: "dark" },
-    defaultTheme: "light",
+    themes: { light: 'light', dark: 'dark' },
+    defaultTheme: 'light',
   }),
 ];
 

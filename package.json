@@ -10,7 +10,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "next": "16.1.6",
@@ -35,6 +36,7 @@
     "eslint-plugin-storybook": "^10.2.19",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
+    "prettier": "^3.2.5",
     "storybook": "^10.2.19",
     "tailwindcss": "^4",
     "ts-jest": "^29.4.6",

@@ -1,12 +1,12 @@
 module.exports = {
-  darkMode: "class",
+  darkMode: 'class',
   theme: {
     extend: {
       backgroundColor: {
-        "skin-base": "var(--background)",
+        'skin-base': 'var(--background)',
       },
       textColor: {
-        "skin-base": "var(--foreground)",
+        'skin-base': 'var(--foreground)',
       },
     },
   },
