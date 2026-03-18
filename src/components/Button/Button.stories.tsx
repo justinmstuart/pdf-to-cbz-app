@@ -8,7 +8,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'radio',
-      options: [Variant.Primary, Variant.Secondary],
+      options: [Variant.Primary],
     },
     disabled: { control: 'boolean' },
   },
@@ -17,40 +17,10 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const PrimaryLight: Story = {
+export const Primary: Story = {
   args: { label: 'Button', variant: Variant.Primary },
   render: (args) => (
     <div className="bg-background p-6 space-x-4">
-      <Button {...args} />
-      <Button {...args} disabled />
-    </div>
-  ),
-};
-
-export const PrimaryDark: Story = {
-  args: { label: 'Button', variant: Variant.Primary },
-  render: (args) => (
-    <div className="dark bg-background p-6 space-x-4">
-      <Button {...args} />
-      <Button {...args} disabled />
-    </div>
-  ),
-};
-
-export const SecondaryLight: Story = {
-  args: { label: 'Button', variant: Variant.Secondary },
-  render: (args) => (
-    <div className="bg-background p-6 space-x-4">
-      <Button {...args} />
-      <Button {...args} disabled />
-    </div>
-  ),
-};
-
-export const SecondaryDark: Story = {
-  args: { label: 'Button', variant: Variant.Secondary },
-  render: (args) => (
-    <div className="dark bg-background p-6 space-x-4">
       <Button {...args} />
       <Button {...args} disabled />
     </div>

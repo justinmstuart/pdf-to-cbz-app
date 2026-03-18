@@ -9,10 +9,10 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const baseClassName = 'text-center font-press-start text-foreground';
+const baseClassName = 'text-center font-press-start leading-[1.5] text-primary';
 
 const headerClassNames: Record<HeaderType, string> = {
-  [HeaderType.H1]: `text-[80px] font-bold`,
+  [HeaderType.H1]: `text-[clamp(1.6rem,5vw,3.2rem)] font-bold [text-shadow:0_0_10px_var(--color-primary),0_0_30px_var(--color-primary),0_0_60px_var(--color-primary)]`,
 };
 
 const HeaderText: FC<Props> = ({ type, children }) => {

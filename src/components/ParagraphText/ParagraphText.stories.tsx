@@ -17,23 +17,12 @@ const meta: Meta<typeof ParagraphText> = {
 export default meta;
 type Story = StoryObj<typeof ParagraphText>;
 
-export const Light: Story = {
+export const Paragraph: Story = {
   parameters: {
     controls: { disable: true },
   },
   render: (args) => (
     <div className="bg-background p-6">
-      <ParagraphText {...args} />
-    </div>
-  ),
-};
-
-export const Dark: Story = {
-  parameters: {
-    controls: { disable: true },
-  },
-  render: (args) => (
-    <div className="dark bg-background p-6">
       <ParagraphText {...args} />
     </div>
   ),

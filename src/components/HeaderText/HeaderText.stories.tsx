@@ -18,23 +18,12 @@ const meta: Meta<typeof HeaderText> = {
 export default meta;
 type Story = StoryObj<typeof HeaderText>;
 
-export const Light: Story = {
+export const Header: Story = {
   parameters: {
     controls: { disable: true },
   },
   render: (args) => (
     <div className="bg-background p-6">
-      <HeaderText {...args} />
-    </div>
-  ),
-};
-
-export const Dark: Story = {
-  parameters: {
-    controls: { disable: true },
-  },
-  render: (args) => (
-    <div className="dark bg-background p-6">
       <HeaderText {...args} />
     </div>
   ),

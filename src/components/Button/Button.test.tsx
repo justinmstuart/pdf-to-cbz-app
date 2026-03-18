@@ -21,10 +21,4 @@ describe('Button', () => {
     render(<Button label="Submit" disabled />);
     expect(screen.getByRole('button', { name: 'Submit' })).toBeDisabled();
   });
-
-  it('applies the secondary variant class', () => {
-    render(<Button label="Cancel" variant={Variant.Secondary} />);
-    const btn = screen.getByRole('button', { name: 'Cancel' });
-    expect(btn.className).toMatch(/border/);
-  });
 });
