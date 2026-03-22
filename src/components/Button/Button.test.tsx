@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Button, { Variant } from './Button';
+import Button from './Button';
 
 describe('Button', () => {
   it('renders the label', () => {

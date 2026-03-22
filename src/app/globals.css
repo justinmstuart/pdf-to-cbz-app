@@ -1,9 +1,16 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
+
 :root {
   --background: #0D0D0D;
   --foreground: #F0F0F0;
+  --primary-color: var(--color-primary);
+  --secondary-color: var(--color-secondary);
+  --brand-accent-color: var(--color-brand-accent);
+  --muted-color: var(--color-muted);
+  --background-color: var(--color-background);
+  --foreground-color: var(--color-foreground);
 }
 
 @theme inline {
