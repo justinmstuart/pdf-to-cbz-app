@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import ParagraphText from './ParagraphText';
 
 const meta: Meta<typeof ParagraphText> = {
