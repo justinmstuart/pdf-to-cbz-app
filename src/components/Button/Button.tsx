@@ -13,15 +13,22 @@ const variants: Record<Variant, string> = {
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   label: string;
+  onClick: () => void;
+  disabled?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({
   variant = Variant.Primary,
   label,
-  ...props
+  onClick,
+  disabled = false,
 }: ButtonProps) => {
   return (
-    <button className={`${base} ${variants[variant]}`} {...props}>
+    <button
+      className={`${base} ${variants[variant]}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {label}
     </button>
   );
