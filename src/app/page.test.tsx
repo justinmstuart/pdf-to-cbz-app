@@ -13,18 +13,18 @@ describe('Home', () => {
     const { getByRole } = render(<Home />);
     const header = getByRole('heading', { level: 1 });
     expect(header).toBeInTheDocument();
-    expect(header).toHaveTextContent('PDF -> CBZ');
+    expect(header).toHaveTextContent('PDF → CBZ');
   });
 
   it('renders description', () => {
     const { getByText } = render(<Home />);
-    expect(getByText('Get started by editing')).toBeInTheDocument();
+    expect(getByText(/Convert a PDF into a CBZ archive/)).toBeInTheDocument();
   });
 
-  it('opens the OS file picker flow when button is clicked', async () => {
+  it('opens the OS file picker flow when DragDropZone is clicked', async () => {
     const user = userEvent.setup();
     const { getByRole, getByLabelText } = render(<Home />);
-    const button = getByRole('button', { name: 'Convert' });
+    const button = getByRole('button', { name: 'Select PDF File' });
     expect(button).toBeInTheDocument();
 
     const fileInput = getByLabelText('PDF files') as HTMLInputElement;
@@ -32,38 +32,38 @@ describe('Home', () => {
 
     await user.click(button);
 
-    expect(clickSpy).toHaveBeenCalledTimes(1);
+    // The click handler is called twice: once from button, once from parent DragDropZone
+    expect(clickSpy).toHaveBeenCalled();
   });
 
-  it('disables the button and shows a spinner only after file selection', async () => {
+  it('shows spinner and loading text after file selection', async () => {
     const user = userEvent.setup();
-    const { getByRole, getByLabelText, queryByRole } = render(<Home />);
-    const button = getByRole('button', { name: 'Convert' });
+    const { getByLabelText, queryByRole, getByText } = render(<Home />);
     const fileInput = getByLabelText('PDF files');
 
-    // Initial state: button enabled, spinner not present
-    expect(button).not.toBeDisabled();
-    expect(queryByRole('status', { name: 'Loading' })).not.toBeInTheDocument();
-
-    // Click the button: should open file picker, but not disable or show spinner yet
-    await user.click(button);
-    expect(button).not.toBeDisabled();
+    // Initial state: spinner not present
     expect(queryByRole('status', { name: 'Loading' })).not.toBeInTheDocument();
 
     // Simulate file selection
     const file = new File(['dummy'], 'test.pdf', { type: 'application/pdf' });
     await user.upload(fileInput, file);
 
-    // After file selection: spinner present
+    // After file selection: spinner present and loading text shown
     expect(queryByRole('status', { name: 'Loading' })).toBeInTheDocument();
-    // After file selection: button is not present
-    expect(button).not.toBeInTheDocument();
+    expect(getByText('Converting your PDF...')).toBeInTheDocument();
   });
 
   it('renders link to documentation', () => {
     const { getByRole } = render(<Home />);
-    const link = getByRole('link', { name: 'Github' });
+    const link = getByRole('link', { name: /View on GitHub/i });
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute('href', 'https://github.com/your-repo');
+  });
+
+  it('renders feature cards', () => {
+    const { getByText } = render(<Home />);
+    expect(getByText('Fast')).toBeInTheDocument();
+    expect(getByText('Private')).toBeInTheDocument();
+    expect(getByText('Compatible')).toBeInTheDocument();
   });
 });

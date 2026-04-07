@@ -3,8 +3,10 @@ import userEvent from '@testing-library/user-event';
 import Button from './Button';
 
 describe('Button', () => {
+  const mockOnClick = jest.fn();
+
   it('renders the label', () => {
-    render(<Button label="Click me" />);
+    render(<Button label="Click me" onClick={mockOnClick} />);
     expect(
       screen.getByRole('button', { name: 'Click me' }),
     ).toBeInTheDocument();
@@ -18,7 +20,7 @@ describe('Button', () => {
   });
 
   it('is disabled when the disabled prop is set', () => {
-    render(<Button label="Submit" disabled />);
+    render(<Button label="Submit" onClick={mockOnClick} disabled />);
     expect(screen.getByRole('button', { name: 'Submit' })).toBeDisabled();
   });
 });

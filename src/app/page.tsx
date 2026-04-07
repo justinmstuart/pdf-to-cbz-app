@@ -2,13 +2,17 @@
 
 import React, { FC, useRef, useState } from 'react';
 import Spinner from '../components/Spinner/Spinner';
-import HeaderText, { HeaderType } from '@/components/HeaderText/HeaderText';
 import ParagraphText from '@/components/ParagraphText/ParagraphText';
-import { Button } from '@/components/Button';
+import DragDropZone from '@/components/DragDropZone';
+import FeatureCard from '@/components/FeatureCard';
+import Panel, { PanelVariant } from '@/components/Panel';
+import PageHeader from '@/components/PageHeader';
+import PageFooter from '@/components/PageFooter';
 
 const Home: FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
   const openFilePicker = () => {
     fileInputRef.current?.click();
@@ -20,35 +24,52 @@ const Home: FC = () => {
     }
   };
 
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+
+    const files = e.dataTransfer.files;
+    if (files && files.length > 0 && files[0].type === 'application/pdf') {
+      setLoading(true);
+    }
+  };
+
   return (
-    <main className="min-h-screen max-w-3xl mx-auto px-4 py-15 flex flex-col">
-      <header className="mb-2">
-        <HeaderText type={HeaderType.H1}>{'PDF -> CBZ'}</HeaderText>
-      </header>
-      <section className="flex flex-col gap-10 items-center justify-center flex-grow">
-        <ParagraphText>
-          Choose a PDF file and convert it into a CBZ archive in one click.
-          Learn more about the script that does the conversion{' '}
-          <a
-            href="https://github.com/justinmstuart/python-utils/blob/main/pdf_to_cbz/README.md"
-            className="text-cyan-400 underline underline-offset-2 hover:text-cyan-300 transition-colors"
-          >
-            here
-          </a>
-          .
-        </ParagraphText>
-        <div className="flex items-center min-h-[56px]">
-          {loading ? (
-            <Spinner />
-          ) : (
-            <Button
-              type="button"
-              onClick={openFilePicker}
-              disabled={loading}
-              label="Convert"
-            />
-          )}
-        </div>
+    <main className="min-h-screen max-w-4xl mx-auto px-4 py-8 md:py-16 flex flex-col">
+      <PageHeader title="PDF → CBZ" />
+
+      <section className="flex flex-col gap-8 items-center justify-center flex-grow">
+        <Panel variant={PanelVariant.Card}>
+          <ParagraphText>
+            <>
+              Convert a PDF into a CBZ archive — a comic book-friendly format
+              that, works with e-readers. Found a bug or have an idea? Pull
+              requests and issues are always welcome.
+            </>
+          </ParagraphText>
+        </Panel>
+
+        <DragDropZone
+          isDragging={isDragging}
+          loading={loading}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          onClick={openFilePicker}
+          icon={<Spinner />}
+          loadingText="Converting your PDF..."
+        />
+
         <input
           ref={fileInputRef}
           type="file"
@@ -57,15 +78,30 @@ const Home: FC = () => {
           style={{ display: 'none' }}
           onChange={handleFileChange}
         />
+
+        <Panel variant={PanelVariant.Grid}>
+          <FeatureCard
+            icon="⚡"
+            title="Fast"
+            description="Local processing"
+            borderColor="primary"
+          />
+          <FeatureCard
+            icon="🔒"
+            title="Private"
+            description="No uploads"
+            borderColor="secondary"
+          />
+          <FeatureCard
+            icon="📖"
+            title="Compatible"
+            description="Works everywhere"
+            borderColor="accent"
+          />
+        </Panel>
       </section>
-      <footer className="mt-8 pt-4 text-center">
-        <a
-          href="https://github.com/your-repo"
-          className="text-cyan-400 underline underline-offset-2 hover:text-cyan-300 transition-colors"
-        >
-          Github
-        </a>
-      </footer>
+
+      <PageFooter githubHref="https://github.com/your-repo" />
     </main>
   );
 };
