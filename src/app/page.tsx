@@ -8,10 +8,12 @@ import FeatureCard from '@/components/FeatureCard';
 import Panel, { PanelVariant } from '@/components/Panel';
 import PageHeader from '@/components/PageHeader';
 import PageFooter from '@/components/PageFooter';
+import usePdfToCbzConverter from '@/hooks/usePdfToCbzConverter';
 
 const Home: FC = () => {
+  const { isLoading, handleFile } = usePdfToCbzConverter();
+
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [loading, setLoading] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
 
   const openFilePicker = () => {
@@ -20,7 +22,9 @@ const Home: FC = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setLoading(true);
+      handleFile(e.target.files[0]);
+      // Reset input so the same file can be selected again
+      e.target.value = '';
     }
   };
 
@@ -40,7 +44,7 @@ const Home: FC = () => {
 
     const files = e.dataTransfer.files;
     if (files && files.length > 0 && files[0].type === 'application/pdf') {
-      setLoading(true);
+      handleFile(files[0]);
     }
   };
 
@@ -61,7 +65,7 @@ const Home: FC = () => {
 
         <DragDropZone
           isDragging={isDragging}
-          loading={loading}
+          loading={isLoading}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
