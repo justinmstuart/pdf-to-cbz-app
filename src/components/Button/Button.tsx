@@ -13,7 +13,7 @@ const variants: Record<Variant, string> = {
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
 }
 

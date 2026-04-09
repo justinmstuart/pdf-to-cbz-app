@@ -1,0 +1,16 @@
+.env*
+!.env.example
+node_modules
+.next
+.git
+.gitignore
+coverage
+storybook-static
+*.tsbuildinfo
+next-env.d.ts
+README.md
+*.test.tsx
+*.test.ts
+*.stories.tsx
+*.stories.ts
+.storybook
