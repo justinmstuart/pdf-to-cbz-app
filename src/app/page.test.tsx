@@ -1,8 +1,14 @@
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Home from './page';
 
+// Mock fetch API
+global.fetch = jest.fn();
+
 describe('Home', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
   it('renders without crashing', () => {
     expect(() => {
       render(<Home />);
@@ -32,11 +38,26 @@ describe('Home', () => {
 
     await user.click(button);
 
-    // The click handler is called twice: once from button, once from parent DragDropZone
-    expect(clickSpy).toHaveBeenCalled();
+    // The file picker should open via the parent DragDropZone click handler
+    expect(clickSpy).toHaveBeenCalledTimes(1);
   });
 
   it('shows spinner and loading text after file selection', async () => {
+    // Mock fetch with a delayed response to give spinner time to render
+    (global.fetch as jest.Mock).mockImplementation(
+      () =>
+        new Promise((resolve) =>
+          setTimeout(
+            () =>
+              resolve({
+                ok: true,
+                blob: () => Promise.resolve(new Blob()),
+              }),
+            100,
+          ),
+        ),
+    );
+
     const user = userEvent.setup();
     const { getByLabelText, queryByRole, getByText } = render(<Home />);
     const fileInput = getByLabelText('PDF files');
@@ -49,7 +70,9 @@ describe('Home', () => {
     await user.upload(fileInput, file);
 
     // After file selection: spinner present and loading text shown
-    expect(queryByRole('status', { name: 'Loading' })).toBeInTheDocument();
+    await waitFor(() => {
+      expect(queryByRole('status', { name: 'Loading' })).toBeInTheDocument();
+    });
     expect(getByText('Converting your PDF...')).toBeInTheDocument();
   });
 

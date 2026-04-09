@@ -1,5 +1,7 @@
 import { FC, ReactNode } from 'react';
-import ParagraphText, { ParagraphVariant } from '../ParagraphText/ParagraphText';
+import ParagraphText, {
+  ParagraphVariant,
+} from '../ParagraphText/ParagraphText';
 import { Button } from '../Button';
 
 export interface DragDropZoneProps {
@@ -65,12 +67,7 @@ const DragDropZone: FC<DragDropZoneProps> = ({
               {helperText}
             </ParagraphText>
           </div>
-          <Button
-            type="button"
-            onClick={onClick}
-            disabled={loading}
-            label={buttonLabel}
-          />
+          <Button type="button" disabled={loading} label={buttonLabel} />
         </>
       )}
     </div>
