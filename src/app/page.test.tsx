@@ -77,15 +77,17 @@ describe('Home', () => {
   });
 
   it('renders link to documentation', () => {
+    process.env.NEXT_PUBLIC_GITHUB_REPO_URL = 'https://github.com/test-repo';
     const { getByRole } = render(<Home />);
     const link = getByRole('link', { name: /View on GitHub/i });
     expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute('href', 'https://github.com/your-repo');
+    expect(link).toHaveAttribute('href', 'https://github.com/test-repo');
+    delete process.env.NEXT_PUBLIC_GITHUB_REPO_URL;
   });
 
   it('renders feature cards', () => {
     const { getByText } = render(<Home />);
-    expect(getByText('Fast')).toBeInTheDocument();
+    expect(getByText('Open Source')).toBeInTheDocument();
     expect(getByText('Private')).toBeInTheDocument();
     expect(getByText('Compatible')).toBeInTheDocument();
   });

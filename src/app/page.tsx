@@ -85,15 +85,15 @@ const Home: FC = () => {
 
         <Panel variant={PanelVariant.Grid}>
           <FeatureCard
-            icon="⚡"
-            title="Fast"
-            description="Local processing"
+            icon="🌍"
+            title="Open Source"
+            description="On GitHub"
             borderColor="primary"
           />
           <FeatureCard
             icon="🔒"
             title="Private"
-            description="No uploads"
+            description="Files are not stored"
             borderColor="secondary"
           />
           <FeatureCard
@@ -105,7 +105,7 @@ const Home: FC = () => {
         </Panel>
       </section>
 
-      <PageFooter githubHref="https://github.com/your-repo" />
+      <PageFooter githubHref={process.env.NEXT_PUBLIC_GITHUB_REPO_URL || ''} />
     </main>
   );
 };

@@ -27,14 +27,14 @@ describe('Panel', () => {
 
   it('applies base width classes to grid variant', () => {
     const { container } = render(
-      <Panel variant={PanelVariant.CardDotted}>content</Panel>,
+      <Panel variant={PanelVariant.Grid}>content</Panel>,
     );
     expect(container.firstChild).toHaveClass('w-full', 'max-w-2xl');
   });
 
   it('applies grid variant classes', () => {
     const { container } = render(
-      <Panel variant={PanelVariant.CardDotted}>content</Panel>,
+      <Panel variant={PanelVariant.Grid}>content</Panel>,
     );
     expect(container.firstChild).toHaveClass(
       'grid',
