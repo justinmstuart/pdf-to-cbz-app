@@ -1,5 +1,8 @@
 # PDF → CBZ App
 
+[![CI](https://github.com/justinmstuart/pdf-to-cbz-app/actions/workflows/ci.yml/badge.svg)](https://github.com/justinmstuart/pdf-to-cbz-app/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A web application for converting PDF files into CBZ archives — a comic book-friendly format compatible with most e-readers and comic book readers.
 
 Files are processed entirely through a backend API and are **never stored** by this frontend application.
